@@ -45,8 +45,6 @@ const { user } = useAuth();
             </p>
           </v-card-text>
         </v-card>
-
-        <HelloWorld />
       </v-col>
     </v-row>
   </v-container>

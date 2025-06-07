@@ -3,13 +3,16 @@
     <v-main class="auth-background">
       <slot />
     </v-main>
+
+    <AppFooter />
   </v-app>
 </template>
 
 <style scoped>
 .auth-background {
   background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-  min-height: 100vh;
+  height: 100vh;
+  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
