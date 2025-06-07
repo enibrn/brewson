@@ -32,10 +32,17 @@ const testPasswords: Record<number, string> = {
   2: 'user123'
 };
 
+// Guest user for guest login
+const guestUser: User = {
+  id: 0,
+  username: 'guest',
+  email: 'guest@brewson.com',
+  name: 'Guest User'
+};
+
 export const useAuth = () => {
   const user = useState<User | null>('auth.user', () => null);
   const isLoggedIn = computed(() => !!user.value);
-
   const login = async (credentials: LoginCredentials): Promise<{ success: boolean; error?: string }> => {
     try {
       // Find user by username or email
@@ -65,7 +72,23 @@ export const useAuth = () => {
     } catch {
       return { success: false, error: 'Login failed' };
     }
-  };  const logout = () => {
+  };
+
+  const loginAsGuest = async (): Promise<{ success: boolean; error?: string }> => {
+    try {
+      // Set guest user in state
+      user.value = guestUser;
+
+      // Store in localStorage for persistence
+      if (import.meta.client) {
+        localStorage.setItem('auth.user', JSON.stringify(guestUser));
+      }
+
+      return { success: true };
+    } catch {
+      return { success: false, error: 'Guest login failed' };
+    }
+  };const logout = () => {
     user.value = null;
     if (import.meta.client) {
       localStorage.removeItem('auth.user');
@@ -87,11 +110,11 @@ export const useAuth = () => {
       }
     }
   };
-
   return {
     user: readonly(user),
     isLoggedIn,
     login,
+    loginAsGuest,
     logout,
     initAuth
   };

@@ -54,15 +54,28 @@
           @click:close="loginError = ''"
         >
           {{ loginError }}
-        </v-alert> <v-btn
+        </v-alert>
+        <v-btn
           type="submit"
           color="primary"
           size="large"
           block
           :loading="loading"
-          class="mb-4"
+          class="mb-3"
         >
           Sign In
+        </v-btn>
+
+        <v-btn
+          color="secondary"
+          size="large"
+          block
+          :loading="loading"
+          class="mb-4"
+          @click="handleGuestLogin"
+        >
+          <v-icon left>mdi-account-question</v-icon>
+          Continue as Guest
         </v-btn>
         <div class="d-flex justify-center">
           <TestAccountsMenu />
@@ -81,7 +94,7 @@ interface LoginCredentials {
   password: string;
 }
 
-const { login } = useAuth();
+const { login, loginAsGuest } = useAuth();
 
 const credentials = ref<LoginCredentials>({
   usernameOrEmail: '',
@@ -126,6 +139,26 @@ const handleLogin = async () => {
       await navigateTo('/');
     } else {
       loginError.value = result.error || 'Login failed';
+    }
+  } catch {
+    loginError.value = 'An unexpected error occurred';
+  } finally {
+    loading.value = false;
+  }
+};
+
+const handleGuestLogin = async () => {
+  loading.value = true;
+  loginError.value = '';
+
+  try {
+    const result = await loginAsGuest();
+
+    if (result.success) {
+      // Redirect to home page
+      await navigateTo('/');
+    } else {
+      loginError.value = result.error || 'Guest login failed';
     }
   } catch {
     loginError.value = 'An unexpected error occurred';

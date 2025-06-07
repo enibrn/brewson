@@ -15,6 +15,28 @@
 - Follow consistent semicolon usage across all `.ts`, `.vue`, and `.js` files
 - This applies to variable declarations, function calls, imports, exports, and all other statements
 
+### HTML/Vue Template Formatting
+- **Never concatenate HTML tags on the same line**
+- Always place opening and closing tags on separate lines for better readability
+- Use proper indentation for nested HTML elements
+- Exception: Short inline elements with minimal content can stay on one line
+
+Good formatting:
+```vue
+<v-btn
+  variant="outlined"
+  color="primary"
+  @click="handleClick"
+>
+  Click Me
+</v-btn>
+```
+
+Bad formatting (tags concatenated):
+```vue
+<v-btn variant="outlined" color="primary" @click="handleClick">Click Me</v-btn>
+```
+
 ### Command Line Instructions
 - Provide PowerShell-compatible commands since this is a Windows development environment
 - Avoid Linux bash syntax and commands
