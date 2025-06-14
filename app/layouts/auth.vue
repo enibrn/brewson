@@ -10,7 +10,7 @@
 
 <style scoped>
 .auth-background {
-  background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+  background: linear-gradient(135deg, #E65100 0%, #FFB74D 100%);
   height: 100vh;
   overflow: hidden;
   display: flex;

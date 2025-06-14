@@ -3,14 +3,13 @@ import { defineVuetifyConfiguration } from 'vuetify-nuxt-module/custom-configura
 export default defineVuetifyConfiguration({
   theme: {
     defaultTheme: 'dark',
-    themes: {
-      dark: {
+    themes: {      dark: {
         colors: {
-          primary: '#2196F3',
+          primary: '#FFB74D',
           secondary: '#424242',
           accent: '#FF4081',
           error: '#FF5252',
-          info: '#2196F3',
+          info: '#FFB74D',
           success: '#4CAF50',
           warning: '#FFC107',
         }

@@ -15,7 +15,7 @@
       <template v-if="user">
         <v-chip
           class="mr-4"
-          color="white"
+          color="black"
           text-color="primary"
           variant="outlined"
         >
