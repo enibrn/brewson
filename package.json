@@ -14,6 +14,9 @@
     "lint:fix": "eslint . --fix"
   },
   "dependencies": {
+    "@jsonforms/core": "^3.6.0",
+    "@jsonforms/vue": "^3.6.0",
+    "@jsonforms/vue-vuetify": "^3.6.0",
     "@nuxt/eslint": "1.4.1",
     "@nuxt/test-utils": "3.19.1",
     "eslint": "^9.0.0",

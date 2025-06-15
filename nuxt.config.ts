@@ -25,10 +25,14 @@ export default defineNuxtConfig({
   build: {
     transpile: ['vuetify'],
   },
-
   vite: {
     ssr: {
       noExternal: ['vuetify'],
+    },
+    resolve: {
+      alias: {
+        'vuetify/labs/VNumberInput': 'vuetify/lib/components/VNumberInput/index.js',
+      },
     },
   },
 
